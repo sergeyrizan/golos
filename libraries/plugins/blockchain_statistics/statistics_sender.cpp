@@ -126,8 +126,10 @@ void stat_client::add_address(const std::string & address) {
     FC_CAPTURE_AND_LOG(())
 }
 
-void stat_client::print_all_endpoints() {
+std::vector<std::string> stat_client::get_endpoint_string_vector() {
+    std::vector<std::string> ep_vec;
     for (auto x : recipient_endpoint_set) {
-        std::cout << x << std::endl;
+        ep_vec.push_back( x.address().to_string() + ":" + to_string(x.port()));
     }
+    return ep_vec;
 }

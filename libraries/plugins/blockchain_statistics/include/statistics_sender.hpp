@@ -39,8 +39,8 @@ public:
     // adds address to _recipient_ip_vec.
     void add_address(const std::string & address);
 
-    /// prints all storing endoints 
-    void print_all_endpoints();
+    /// returns statistics recievers endpoints
+    std::vector<std::string> get_endpoint_string_vector();
 
 private:
     // Flag which indicates is pushing data enabled or not
