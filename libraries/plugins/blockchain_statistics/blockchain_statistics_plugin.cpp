@@ -559,8 +559,7 @@ namespace steemit {
             if (_my->stat_sender->can_start()) {
                 _my->stat_sender->start();
                 wlog("chain_stats plugin: stat_sender was started");
-                wlog("recipients endpoints: ${endpoints}", ("endpoints", get_endpoint_string_vector()));
-                _my->stat_sender->print_all_endpoints();
+                wlog("recipients endpoints: ${endpoints}", ( "endpoints", _my->stat_sender->get_endpoint_string_vector() ) );
             }
             else {
                 wlog("chain_stats plugin: stat_sender was not started: no recipient's IPs were provided");

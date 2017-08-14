@@ -6,6 +6,7 @@
 #include <cds/container/fcqueue.h>
 #include <cds/threading/model.h>
 #include <thread>
+#include <vector>
 #include <atomic>
 
 #include <steemit/chain/steem_object_types.hpp>
