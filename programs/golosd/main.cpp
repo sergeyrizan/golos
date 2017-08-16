@@ -57,7 +57,7 @@ int main(int argc, char **argv) {
 #else
         std::cerr
                 << "------------------------------------------------------\n\n";
-        std::cerr << "            STARTING GOLOS NETWORK\n\n";
+        std::cerr << "            STARTING Bots NETWORK\n\n";
         std::cerr << "------------------------------------------------------\n";
         std::cerr << "initminer public key: " << STEEMIT_INIT_PUBLIC_KEY_STR
                   << "\n";
