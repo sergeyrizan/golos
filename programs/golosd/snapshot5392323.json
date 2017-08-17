@@ -1,8 +1,8 @@
 {
   "timestamp": "2016-09-29T12:00:00",
-  "head_block_num": 5392323,
-  "head_block_id": "005247c3271c99153204077460cbd62e5750ad0f",
-  "chain_id": "0000000000000000000000000000000000000000000000000000000000000000",
+  "head_block_num": 0,
+  "head_block_id": "",
+  "chain_id": "f01dabe8f7dbc176974371f633b2df09c619740b3055978b8114901171577cc6",
   "summary": {
     "balance": "0.0 BOTSD",
     "sbd_balance": "0.0 BTS",
