@@ -16,7 +16,7 @@
  #define STEEMIT_INIT_PUBLIC_KEY_STR             (std::string(steemit::protocol::public_key_type(STEEMIT_INIT_PRIVATE_KEY.get_public_key())))
  #define STEEMIT_CHAIN_ID                        (fc::sha256::hash(BLOCKCHAIN_NAME))
  
- #define VESTS_SYMBOL  (uint64_t(6) | (uint64_t('G') << 8) | (uint64_t('E') << 16) | (uint64_t('S') << 24) | (uint64_t('T') << 32) | (uint64_t('S') << 40)) ///< VESTS with 6 digits of precision
+ #define VESTS_SYMBOL  (uint64_t(6) | (uint64_t('V') << 8) | (uint64_t('E') << 16) | (uint64_t('S') << 24) | (uint64_t('T') << 32) | (uint64_t('S') << 40)) ///< VESTS with 6 digits of precision
  #define STEEM_SYMBOL  (uint64_t(3) | (uint64_t('B') << 8) | (uint64_t('O') << 16) | (uint64_t('T') << 24) | (uint64_t('S') << 32) | (uint64_t('D') << 40)) ///< STEEM with 3 digits of precision
  #define SBD_SYMBOL    (uint64_t(3) | (uint64_t('B') << 8) | (uint64_t('T') << 16) | (uint64_t('S') << 24) ) ///< Test Backed Dollars with 3 digits of precision
  #define STMD_SYMBOL   (uint64_t(3) | (uint64_t('S') << 8) | (uint64_t('T') << 16) | (uint64_t('M') << 24) | (uint64_t('D') << 32) ) ///< Test Dollars with 3 digits of precision
@@ -206,12 +206,13 @@
  #define STEEMIT_IRREVERSIBLE_THRESHOLD          (75 * STEEMIT_1_PERCENT)
  
  #else // IS LIVE STEEM NETWORK
- 
- #define STEEMIT_INIT_PUBLIC_KEY_STR             "BTS5d6V6X87DK44xmhAD92hqJeR8Acd1TBKCtVnGLC5VDpER5CtWE"
+ #define STEEMIT_INIT_PRIVATE_KEY                (fc::ecc::private_key::regenerate(fc::sha256::hash(BLOCKCHAIN_NAME)))
+ #define STEEMIT_INIT_PUBLIC_KEY_STR             (std::string(steemit::protocol::public_key_type(STEEMIT_INIT_PRIVATE_KEY.get_public_key())))
+ //#define STEEMIT_INIT_PUBLIC_KEY_STR             "BTS7EsYYkzyJaoidRrMiY5q2XueyGqcv2GHUovFBHdzpco7RmYF5r"
  #define BLOCKCHAIN_NAME                         "BOTSD"
  #define STEEMIT_CHAIN_ID                        (fc::sha256::hash(BLOCKCHAIN_NAME))
  
- #define VESTS_SYMBOL  (uint64_t(6) | (uint64_t('G') << 8) | (uint64_t('E') << 16) | (uint64_t('S') << 24) | (uint64_t('T') << 32) | (uint64_t('S') << 40)) ///< GESTS with 6 digits of precision
+ #define VESTS_SYMBOL  (uint64_t(6) | (uint64_t('V') << 8) | (uint64_t('E') << 16) | (uint64_t('S') << 24) | (uint64_t('T') << 32) | (uint64_t('S') << 40)) ///< GESTS with 6 digits of precision
  #define STEEM_SYMBOL  (uint64_t(3) | (uint64_t('B') << 8) | (uint64_t('O') << 16) | (uint64_t('T') << 24) | (uint64_t('S') << 32) | (uint64_t('D') << 40)) ///< GOLOS with 3 digits of precision
  #define SBD_SYMBOL    (uint64_t(3) | (uint64_t('B') << 8) | (uint64_t('T') << 16) | (uint64_t('S') << 24) ) ///< STEEM Backed Dollars with 3 digits of precision
  #define STMD_SYMBOL   (uint64_t(3) | (uint64_t('S') << 8) | (uint64_t('T') << 16) | (uint64_t('M') << 24) | (uint64_t('D') << 32) ) ///< STEEM Dollars with 3 digits of precision
