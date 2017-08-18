@@ -124,6 +124,7 @@ namespace steemit {
 
         bool network_broadcast_api::check_max_block_age(int32_t max_block_age) {
             return _app.chain_database()->with_read_lock([&]() {
+                std::cerr << "check_max_block_age max_block_age: " << max_block_age << "\n";
                 if (max_block_age < 0) {
                     return false;
                 }
@@ -131,12 +132,14 @@ namespace steemit {
                 fc::time_point_sec now = graphene::time::now();
                 std::shared_ptr<database> db = _app.chain_database();
                 const dynamic_global_property_object &dgpo = db->get_dynamic_global_properties();
-
-                return (dgpo.time < now - fc::seconds(max_block_age));
+                const bool &resault = dgpo.time < now - fc::seconds(max_block_age);
+                std::cerr << "check_max_block_age dgpo.time: " << resault << "\n";
+                return (resault);
             });
         }
 
         void network_broadcast_api::set_max_block_age(int32_t max_block_age) {
+            std::cerr << "set_max_block_age max_block_age: " << max_block_age << "\n";
             _max_block_age = max_block_age;
         }
 
@@ -228,17 +231,29 @@ namespace steemit {
         }
 
         void network_broadcast_api::broadcast_transaction_with_callback(confirmation_callback cb, const signed_transaction &trx) {
+            ilog("start broadcast_transaction_with_callback");
             if (_app._read_only) {
+                ilog("_app._read_only :  true");
                 FC_ASSERT(_app._remote_net_api, "Write node RPC not configured properly or non connected.");
                 (*_app._remote_net_api)->broadcast_transaction_with_callback(cb, trx);
             } else {
-                FC_ASSERT(!check_max_block_age(_max_block_age));
+                ilog("_app._read_only :  false");
+                const bool &is_assert_max_block_age = !check_max_block_age(_max_block_age);
+                if(is_assert_max_block_age) {
+                    ilog("FC_ASSERT error");
+                    FC_ASSERT(is_assert_max_block_age);
+                }
+                ilog("start trx validation");
                 trx.validate();
+                ilog("add trx callbacks");
                 _callbacks[trx.id()] = cb;
+                ilog("push trx callbacks");
                 _callbacks_expirations[trx.expiration].push_back(trx.id());
-
+                ilog("push trx transaction");
                 _app.chain_database()->push_transaction(trx);
+                ilog("trx broadcast_transaction");
                 _app.p2p_node()->broadcast_transaction(trx);
+                ilog("finish  broadcast_transaction");
             }
         }
 
