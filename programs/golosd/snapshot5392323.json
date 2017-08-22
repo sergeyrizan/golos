@@ -1,129 +1,13 @@
 {
   "timestamp": "2015-06-29T12:00:00",
-  "head_block_num": 1,
-  "head_block_id": "0000000000000000000000000000000000000000",
   "chain_id": "f01dabe8f7dbc176974371f633b2df09c619740b3055978b8114901171577cc6",
   "summary": {
-    "balance": "1.000 BOTSD",
-    "sbd_balance": "0.001 BTS",
-    "total_vesting_shares": "2000000.000000 VESTS",
-    "total_vesting_fund_steem": "1000000.0 BOTSD",
-    "accounts_count": 1
+    "balance": "0.000 BOTSD",
+    "sbd_balance": "0.000 BTS",
+    "total_vesting_shares": "0.000000 VESTS",
+    "total_vesting_fund_steem": "0.0 BOTSD",
+    "accounts_count": 0
   },
-  "accounts": [
-     {
-      "id": 3,
-      "name": "initminer",
-      "posting_rewards": 0,
-      "curation_rewards": 0,
-      "keys": {
-        "owner_key": {
-          "weight_threshold": 1,
-          "account_auths": [
-
-          ],
-          "key_auths": [
-            [
-              "BTS8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX",
-              1
-            ]
-          ]
-        },
-        "active_key": {
-          "weight_threshold": 1,
-          "account_auths": [
-
-          ],
-          "key_auths": [
-            [
-              "BTS8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX",
-              1
-            ]
-          ]
-        },
-        "posting_key": {
-          "weight_threshold": 1,
-          "account_auths": [
-
-          ],
-          "key_auths": [
-            [
-              "BTS8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX",
-              1
-            ]
-          ]
-        },
-        "memo_key": "BTS8GC13uCZbP44HzMLV6zPZGwVQ8Nt4Kji8PapsPiNq1BK153XTX"
-      },
-      "balances": {
-        "assets": [
-          "1.000 BOTSD",
-          "0.001 BTS",
-          "1000000.000000 VESTS"
-        ]
-      },
-      "json_metadata": "",
-      "proxy": "",
-      "post_count": 0,
-      "recovery_account": "",
-      "reputation": 0
-    },
-    {
-      "id": 4,
-      "name": "admin",
-      "posting_rewards": 0,
-      "curation_rewards": 0,
-      "keys": {
-        "owner_key": {
-          "weight_threshold": 1,
-          "account_auths": [
-
-          ],
-          "key_auths": [
-            [
-              "BTS7Ju1xTxVNAxDsL7UnfAbkSCqiuUqHs2Qw3tfXgsd9mozTVxsms",
-              1
-            ]
-          ]
-        },
-        "active_key": {
-          "weight_threshold": 1,
-          "account_auths": [
-
-          ],
-          "key_auths": [
-            [
-              "BTS6LLit2ENvx2cPei3Zwa3kZV9xieNevJFN9sgtK112ijHAXiQLr",
-              1
-            ]
-          ]
-        },
-        "posting_key": {
-          "weight_threshold": 1,
-          "account_auths": [
-
-          ],
-          "key_auths": [
-            [
-              "BTS7w3KVpzwzTD41Z8ejLqaaZeLBsz6tUnCxpyUpckBWxTJefWSVg",
-              1
-            ]
-          ]
-        },
-        "memo_key": "BTS8MhNfAXGzTjrD878hVPNSEnyjGEoEpydMreSsevhxunHkBsLyq"
-      },
-      "balances": {
-        "assets": [
-          "0.000 BOTSD",
-          "0.000 BTS",
-          "1000000.000000 VESTS"
-        ]
-      },
-      "json_metadata": "",
-      "proxy": "",
-      "post_count": 0,
-      "recovery_account": "steem",
-      "reputation": 6745355
-    }
+  "accounts": [    
   ]
 }

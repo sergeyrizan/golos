@@ -2916,7 +2916,7 @@ namespace steemit {
                           << snapshot_file.generic_string() << "\n";
 
                 unsigned char digest[MD5_DIGEST_LENGTH];
-                char snapshot_checksum[] = "2ff330cdcedf2a83e350b1f81a8458a0";//"081b0149f0b2a570ae76b663090cfb0c";
+                char snapshot_checksum[] = "256a9fdcefec06e859235064696bbfc5";//"081b0149f0b2a570ae76b663090cfb0c";
                 char md5hash[33];
                 boost::iostreams::mapped_file_source src(snapshot_path);
                 MD5((unsigned char *)src.data(), src.size(), (unsigned char *)&digest);
