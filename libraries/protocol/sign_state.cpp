@@ -5,7 +5,6 @@ namespace steemit {
     namespace protocol {
 
         bool sign_state::signed_by(const public_key_type &k) {
-            wdump((k));
             auto itr = provided_signatures.find(k);
              wdump((itr));
             if (itr == provided_signatures.end()) {
