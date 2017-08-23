@@ -5,11 +5,14 @@ namespace steemit {
     namespace protocol {
 
         bool sign_state::signed_by(const public_key_type &k) {
+            wdump((k));
             auto itr = provided_signatures.find(k);
+             wdump((itr));
             if (itr == provided_signatures.end()) {
                 auto pk = available_keys.find(k);
                 if (pk != available_keys.end()) {
-                    std::cerr << "12------------- pk != available_keys.end( )" << std::to_string(pk) << "\n";
+                    wdump((pk));
+                    std::cerr << "12------------- pk != available_keys.end( )"  << "\n";
                     return provided_signatures[k] = true;
                 }
                 std::cerr << "15------------- signed_by false" << "\n";
