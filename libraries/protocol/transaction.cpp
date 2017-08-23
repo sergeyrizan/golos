@@ -144,6 +144,8 @@ namespace steemit {
 
                 // fetch all of the top level authorities
                 for (auto id : required_active) {
+                    std::cerr << "147------------- required_active" << "\n";
+                    std::cerr << "------------- id " << std::to_string(id) << "\n";
                     STEEMIT_ASSERT(s.check_authority(id) ||
                                    s.check_authority(get_owner(id)),
                             tx_missing_active_auth, "Missing Active Authority ${id}", ("id", id)("auth", get_active(id))("owner", get_owner(id)));

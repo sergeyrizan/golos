@@ -9,7 +9,7 @@ namespace steemit {
             if (itr == provided_signatures.end()) {
                 auto pk = available_keys.find(k);
                 if (pk != available_keys.end()) {
-                    std::cerr << "12------------- pk != available_keys.end()" << "\n";
+                    std::cerr << "12------------- pk != available_keys.end( )" << k << "\n";
                     return provided_signatures[k] = true;
                 }
                 std::cerr << "15------------- signed_by false" << "\n";
@@ -20,9 +20,9 @@ namespace steemit {
         }
 
         bool sign_state::check_authority(string id) {
-            std::cerr << "-23------------ signed_by true" << id << "\n";;
+            std::cerr << "23------------- signed_by " << id << "\n";;
             if (approved_by.find(id) != approved_by.end()) {
-                ilog("true "); 
+                std::cerr << "25------------- signed_by  true" << "\n";;
                 return true;
             }
             return check_authority(get_active(id));
@@ -64,8 +64,8 @@ namespace steemit {
                     }
                 }
             }
-            std::cerr << "67------------- signed_by true" << std::to_string(total_weight) << "\n";
-            std::cerr << "68------------- signed_by true" << std::to_string(auth.weight_threshold) << "\n";;
+            std::cerr << "67------------- total_weighte" << std::to_string(total_weight) << "\n";
+            std::cerr << "68------------- weight_threshold" << std::to_string(auth.weight_threshold) << "\n";;
             return total_weight >= auth.weight_threshold;
         }
 
