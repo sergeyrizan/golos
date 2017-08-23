@@ -9,7 +9,6 @@ namespace steemit {
             if (itr == provided_signatures.end()) {
                 auto pk = available_keys.find(k);
                 if (pk != available_keys.end()) {
-                    wdump((pk));
                     std::cerr << "12------------- pk != available_keys.end( )"  << "\n";
                     return provided_signatures[k] = true;
                 }
