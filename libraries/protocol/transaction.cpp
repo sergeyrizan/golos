@@ -144,8 +144,8 @@ namespace steemit {
 
                 // fetch all of the top level authorities
                 for (auto id : required_active) {
-                    bool &check_id = s.check_authority(id);
-                    bool &check_owner = s.check_authority(get_owner(id));
+                    bool check_id = s.check_authority(id);
+                    bool check_owner = s.check_authority(get_owner(id));
                     std::string status = "" ;
                     if(check_id) {
                         status +=" check_id true";
