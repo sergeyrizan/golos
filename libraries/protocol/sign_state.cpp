@@ -9,7 +9,7 @@ namespace steemit {
             if (itr == provided_signatures.end()) {
                 auto pk = available_keys.find(k);
                 if (pk != available_keys.end()) {
-                    std::cerr << "12------------- pk != available_keys.end( )" << k << "\n";
+                    std::cerr << "12------------- pk != available_keys.end( )" << std::to_string(k) << "\n";
                     return provided_signatures[k] = true;
                 }
                 std::cerr << "15------------- signed_by false" << "\n";
