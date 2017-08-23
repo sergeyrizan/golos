@@ -163,7 +163,7 @@ namespace steemit {
                        status +=" check_id ||check_owner false";
                     }
                     STEEMIT_ASSERT(check_id || check_owner),
-                            tx_missing_active_auth, "Missing Active Authority ${id}", ("status", status)("auth", get_active(id))("owner", get_owner(id)));
+                            tx_missing_active_auth, "Missing Active Authority ${status}", ("status", status)("auth", get_active(id))("owner", get_owner(id)));
                 }
 
                 for (auto id : required_owner) {
