@@ -144,26 +144,9 @@ namespace steemit {
 
                 // fetch all of the top level authorities
                 for (auto id : required_active) {
-                    bool check_id = s.check_authority(id);
-                    bool check_owner = s.check_authority(get_owner(id));
-                    std::string status = "" ;
-                    if(check_id) {
-                        status +=" check_id true";
-                    } else {
-                        status +=" check_id false";
-                    }
-                    if(check_owner) {
-                        status +=" check_owner true";
-                    } else {
-                        status +=" check_owner false";
-                    }
-                    if(check_id || check_owner) {
-                        status +=" check_id ||check_owner true";
-                    } else {
-                       status +=" check_id ||check_owner false";
-                    }
-                    STEEMIT_ASSERT(check_id || check_owner,
-                            tx_missing_active_auth, "Missing Active Authority ${status}", ("status", status)("auth", get_active(id))("owner", get_owner(id)));
+                    STEEMIT_ASSERT(s.check_authority(id) ||
+                                   s.check_authority(get_owner(id)),
+                            tx_missing_active_auth, "Missing Active Authority ${id}", ("id", id)("auth", get_active(id))("owner", get_owner(id)));
                 }
 
                 for (auto id : required_owner) {
