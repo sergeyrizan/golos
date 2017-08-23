@@ -9,10 +9,13 @@ namespace steemit {
             if (itr == provided_signatures.end()) {
                 auto pk = available_keys.find(k);
                 if (pk != available_keys.end()) {
+                    ilog("pk != available_keys.end()");
                     return provided_signatures[k] = true;
                 }
+                ilog(" signed_by false");
                 return false;
             }
+            ilog("signed_by true");
             return itr->second = true;
         }
 
@@ -29,6 +32,7 @@ namespace steemit {
                 if (signed_by(k.first)) {
                     total_weight += k.second;
                     if (total_weight >= auth.weight_threshold) {
+                        ilog(total_weight);
                         return true;
                     }
                 }
@@ -37,22 +41,29 @@ namespace steemit {
             for (const auto &a : auth.account_auths) {
                 if (approved_by.find(a.first) == approved_by.end()) {
                     if (depth == max_recursion) {
+                        ilog(total_weight);
                         continue;
                     }
                     if (check_authority(get_active(a.first), depth + 1)) {
                         approved_by.insert(a.first);
                         total_weight += a.second;
+                        ilog(total_weight);
                         if (total_weight >= auth.weight_threshold) {
+                            ilog(total_weight);
                             return true;
                         }
                     }
                 } else {
                     total_weight += a.second;
+                    ilog(total_weight);
                     if (total_weight >= auth.weight_threshold) {
+                        ilog(total_weight);
                         return true;
                     }
                 }
             }
+            ilog(total_weight);
+            ilog(auth.weight_threshold);
             return total_weight >= auth.weight_threshold;
         }
 
