@@ -63,7 +63,7 @@ namespace steemit {
                 }
             }
             ilog(std::to_string(total_weight));
-            ilog(auth.weight_threshold);
+            ilog(std::to_string(auth.weight_threshold));
             return total_weight >= auth.weight_threshold;
         }
 
