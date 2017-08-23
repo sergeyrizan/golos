@@ -20,7 +20,9 @@ namespace steemit {
         }
 
         bool sign_state::check_authority(string id) {
+            ilog(id);
             if (approved_by.find(id) != approved_by.end()) {
+                ilog('true'); 
                 return true;
             }
             return check_authority(get_active(id));
