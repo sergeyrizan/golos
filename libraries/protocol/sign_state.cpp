@@ -5,6 +5,7 @@ namespace steemit {
     namespace protocol {
 
         bool sign_state::signed_by(const public_key_type &k) {
+            wdump((provided_signatures));
             auto itr = provided_signatures.find(k);
             if (itr == provided_signatures.end()) {
                 auto pk = available_keys.find(k);
@@ -30,11 +31,12 @@ namespace steemit {
 
         bool sign_state::check_authority(const authority &auth, uint32_t depth) {
             uint32_t total_weight = 0;
+            wdump((auth));
             for (const auto &k : auth.key_auths) {
                 if (signed_by(k.first)) {
                     total_weight += k.second;
                     if (total_weight >= auth.weight_threshold) {
-                        std::cerr << "37------------- signed_by true" << std::to_string(total_weight) << "\n";
+                        std::cerr << "37------------- signed_by total_weight " << std::to_string(total_weight) << "\n";
                         return true;
                     }
                 }
@@ -49,23 +51,23 @@ namespace steemit {
                     if (check_authority(get_active(a.first), depth + 1)) {
                         approved_by.insert(a.first);
                         total_weight += a.second;
-                        std::cerr << "52------------- signed_by true" << std::to_string(total_weight) << "\n";
+                        std::cerr << "52------------- signed_by total_weight " << std::to_string(total_weight) << "\n";
                         if (total_weight >= auth.weight_threshold) {
-                            std::cerr << "54------------- signed_by true" << std::to_string(total_weight) << "\n";;
+                            std::cerr << "54------------- signed_by total_weight " << std::to_string(total_weight) << "\n";;
                             return true;
                         }
                     }
                 } else {
                     total_weight += a.second;
-                    std::cerr << "60------------- signed_by true" << std::to_string(total_weight) << "\n";
+                    std::cerr << "60------------- signed_by total_weight " << std::to_string(total_weight) << "\n";
                     if (total_weight >= auth.weight_threshold) {
-                        std::cerr << "62------------- signed_by true" << std::to_string(total_weight) << "\n";
+                        std::cerr << "62------------- signed_by total_weight " << std::to_string(total_weight) << "\n";
                         return true;
                     }
                 }
             }
-            std::cerr << "67------------- total_weighte" << std::to_string(total_weight) << "\n";
-            std::cerr << "68------------- weight_threshold" << std::to_string(auth.weight_threshold) << "\n";;
+            std::cerr << "67------------- total_weighte " << std::to_string(total_weight) << "\n";
+            std::cerr << "68------------- weight_threshold " << std::to_string(auth.weight_threshold) << "\n";;
             return total_weight >= auth.weight_threshold;
         }
 
