@@ -146,8 +146,6 @@ namespace steemit {
                 for (auto id : required_active) {
                     std::cerr << "147------------- required_active" << "\n";
                     wdump((id));
-                    auto &owner_id = get_owner(id)
-                     wdump((owner_id));
                     STEEMIT_ASSERT(s.check_authority(id) ||
                                    s.check_authority(get_owner(id)),
                             tx_missing_active_auth, "Missing Active Authority ${id}", ("id", id)("auth", get_active(id))("owner", get_owner(id)));
