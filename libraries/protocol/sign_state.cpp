@@ -9,18 +9,18 @@ namespace steemit {
             if (itr == provided_signatures.end()) {
                 auto pk = available_keys.find(k);
                 if (pk != available_keys.end()) {
-                    ilog("pk != available_keys.end()");
+                    std::cerr << "------------- pk != available_keys.end()" << "\n";
                     return provided_signatures[k] = true;
                 }
-                ilog(" signed_by false");
+                std::cerr << "------------- signed_by false" << "\n";
                 return false;
             }
-            ilog("signed_by true");
+            std::cerr << "------------- signed_by true" << "\n";;
             return itr->second = true;
         }
 
         bool sign_state::check_authority(string id) {
-            ilog(id);
+            std::cerr << "------------- signed_by true" << id << "\n";;
             if (approved_by.find(id) != approved_by.end()) {
                 ilog("true "); 
                 return true;
@@ -34,7 +34,7 @@ namespace steemit {
                 if (signed_by(k.first)) {
                     total_weight += k.second;
                     if (total_weight >= auth.weight_threshold) {
-                        ilog(std::to_string(total_weight));
+                        std::cerr << "------------- signed_by true" << std::to_string(total_weight) << "\n";
                         return true;
                     }
                 }
@@ -43,29 +43,29 @@ namespace steemit {
             for (const auto &a : auth.account_auths) {
                 if (approved_by.find(a.first) == approved_by.end()) {
                     if (depth == max_recursion) {
-                        ilog(std::to_string(total_weight));
+                        std::cerr << "------------- signed_by true" << std::to_string(total_weight) << "\n";
                         continue;
                     }
                     if (check_authority(get_active(a.first), depth + 1)) {
                         approved_by.insert(a.first);
                         total_weight += a.second;
-                        ilog(std::to_string(total_weight));
+                        std::cerr << "------------- signed_by true" << std::to_string(total_weight) << "\n";
                         if (total_weight >= auth.weight_threshold) {
-                            ilog(std::to_string(total_weight));
+                            std::cerr << "------------- signed_by true" << std::to_string(total_weight) << "\n";;
                             return true;
                         }
                     }
                 } else {
                     total_weight += a.second;
-                    ilog(std::to_string(total_weight));
+                    std::cerr << "------------- signed_by true" << std::to_string(total_weight) << "\n";
                     if (total_weight >= auth.weight_threshold) {
-                        ilog(std::to_string(total_weight));
+                        std::cerr << "------------- signed_by true" << std::to_string(total_weight) << "\n";
                         return true;
                     }
                 }
             }
-            ilog(std::to_string(total_weight));
-            ilog(std::to_string(auth.weight_threshold));
+            std::cerr << "------------- signed_by true" << std::to_string(total_weight) << "\n";
+            std::cerr << "------------- signed_by true" << std::to_string(auth.weight_threshold) << "\n";;
             return total_weight >= auth.weight_threshold;
         }
 
