@@ -7,6 +7,7 @@ namespace steemit {
         bool sign_state::signed_by(const public_key_type &k) {
             wdump((provided_signatures));
             auto itr = provided_signatures.find(k);
+            wdump((provided_signatures));
             if (itr == provided_signatures.end()) {
                 auto pk = available_keys.find(k);
                 if (pk != available_keys.end()) {
